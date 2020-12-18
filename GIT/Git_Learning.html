@@ -1,0 +1,621 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Git_Learning</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#git学习">Git学习</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#git概述">Git概述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#linux基本操作命令">LINUX基本操作命令</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n55"><a class="md-toc-inner" href="#git结构">Git结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n65"><a class="md-toc-inner" href="#git文件目录结构说明">.git文件目录结构说明</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n85"><a class="md-toc-inner" href="#git的config配置">Git的config配置</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n104"><a class="md-toc-inner" href="#git三种对象">Git三种对象</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n105"><a class="md-toc-inner" href="#git对象">GIT对象</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n128"><a class="md-toc-inner" href="#树对象">树对象</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n143"><a class="md-toc-inner" href="#commit对象提交对象）">commit对象（提交对象）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n151"><a class="md-toc-inner" href="#三种对象的关系">三种对象的关系</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n160"><a class="md-toc-inner" href="#git本地仓库操作">GIT本地仓库操作</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n234"><a class="md-toc-inner" href="#git分支操作">Git分支操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n235"><a class="md-toc-inner" href="#基本命令">基本命令</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n291"><a class="md-toc-inner" href="#git分支工作案例">Git分支工作案例</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n310"><a class="md-toc-inner" href="#git分支模式">Git分支模式</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n380"><a class="md-toc-inner" href="#杂记">杂记</a></span></p></div><h1><a name="git学习" class="md-header-anchor"></a><span>Git学习</span></h1><h2><a name="git概述" class="md-header-anchor"></a><span>Git概述</span></h2><h3><a name="linux基本操作命令" class="md-header-anchor"></a><span>LINUX基本操作命令</span></h3><ul><li><p><code>echo &#39;xxx&#39; &gt; xx</code><span> </span><span>	</span><span>创建文件xx并写入内容xxx</span></p></li><li><p><code>clear</code><span>  清屏</span></p></li><li><p><code>ll</code><span> </span><span>	</span><span>查看文件属性</span></p><ul><li><p><span>例：drwxr-xr-x 1 lenovo 197121          0 Jan  7  2019  AppData/</span></p></li><li><p><span>第一个字母表示文件类型</span></p><ul><li><span>&#39;-&#39;，表示普通文件</span></li><li><span>&#39;d&#39;，表示目录文件</span></li></ul></li><li><p><span>紧接着是3*3个字符分组，对于owner,group,others而言，以-rwx（owner）r-x（Group）r-x(Others)为例</span></p><ul><li><span>普通文件，使用者自己可读，写，执行</span></li><li><span>同一组的用户可读，不可写，可执行</span></li><li><span>其他用户可读，不可写，可执行</span></li></ul></li><li><p><span>第二个栏位-文件个数，若为目录文件，则为目录下文件的个数</span></p></li><li><p><span>第三个栏位-该文件/目录的拥有者</span></p></li><li><p><span>第四个栏位-所属的组，每一个使用者都可以拥有一个以上的组，不过大部分的使用者应该都只属于一个组，只有当系统管理员希望给予某使用者特殊权限时，才可能会给他另一个组</span></p></li><li><p><span>第五栏位，表示文件大小。文件大小用byte来表示，而空目录一般都是1024byte，当然可以用其它参数使文件显示的单位不同，如使用ls –k就是用kb莱显示一个文件的大小单位，不过一般我们还是以byte为主。</span></p></li><li><p><span>第六个栏位，表示最后一次修改时间。以“月，日，时间”的格式表示，如Aug 15 5:46表示8月15日早上5:46分。</span></p></li><li><p><span>第七个栏位，表示文件名。我们可以用ls –a显示隐藏的文件名。</span></p></li></ul></li><li><p><code>find xxx</code><span> 寻找文件xxx，并打印出文件下的所有文件目录以及文件</span></p></li><li><p><code>find xxx -type f</code><span>  寻找文件（夹）xxx，并打印出文件下的所有文件，不打印目录</span></p></li><li><p><code>rm xxx</code><span>   删除文件名xxx</span></p></li><li><p><code>mv xxx xxxx</code><span>  将文件xxx的名称改为xxxx</span></p></li><li><p><code>cat</code><span>  查看文件内容</span></p></li><li><p><code>vim</code><span> 使用vim编辑器编辑文件  </span><code>:set nu</code><span>显示行号</span></p></li></ul><h3><a name="git结构" class="md-header-anchor"></a><span>Git结构</span></h3><ul><li><span>工作区---本地代码（沙箱环境）</span></li><li><span>暂存区---改完一个确定的文件就放到暂存区</span></li><li><span>本地库---最终一下从暂存区中提交到版本库(.git)</span></li><li><code>git ls-files -s</code><span> 查看缓存区中的文件</span></li></ul><h3><a name="git文件目录结构说明" class="md-header-anchor"></a><span>.git文件目录结构说明</span></h3><ul><li><span>hooks--钩子，是在进行add和commit之前或之后执行的脚本，包含客户端或服务端的钩子脚本</span></li><li><span>info--包含一个全局性排除文件，那些文件git无需进行管理</span></li><li><span>logs---日志文件</span></li><li><strong><em><span>objects</span></em></strong><span>--目录存储的是所有的数据内容（数据库）</span></li><li><strong><em><span>refs</span></em></strong><span>--目录存储指向数据（分支）的提交对象的指针</span></li><li><span>config---项目级别的配置文件</span></li><li><span>description--描述文件</span></li><li><strong><em><span>HEAD</span></em></strong><span>--文件指示目前被检出的分支</span></li><li><strong><em><span>index</span></em></strong><span>---文件保存暂存区的信息</span></li></ul><h3><a name="git的config配置" class="md-header-anchor"></a><span>Git的config配置</span></h3><ul><li><p><code>git config --global user.name &quot;xx&quot;</code><span>    配置自己的git名称</span></p></li><li><p><code>git config --global user.email xxx</code><span>	</span><span>配置自己的邮箱</span></p></li><li><p><span>git配置优先级：</span></p><ul><li><code>git config --global</code><span>    global指的是登录这台计算机的用户</span></li><li><code>git config --system</code><span>    system指的是当前的系统，不管是什么用户</span></li><li><code>git config</code><span>    不指明，则默认是当前文件</span></li><li><span>优先级大小： 不填&gt;global&gt;system</span></li></ul></li><li><p><code>git config -l</code><span>  查看自己的git的配置</span></p></li></ul><h2><a name="git三种对象" class="md-header-anchor"></a><span>Git三种对象</span></h2><h3><a name="git对象" class="md-header-anchor"></a><span>GIT对象</span></h3><ul><li><p><span>Git是一个内容寻址文件系统，这意味着Git核心部分是一个简单的键值对数据库，可以向Git仓库中插入任意类型的内容，它会返回一个唯一的键，通过该键可以在任意时刻再次取回内容。</span></p></li><li><p><code>key:value</code><span>组成的键值对，key是hash-code，value是内容，这个键值对在Git内部是</span><strong><em><span>数据对象（blob object）</span></em></strong></p></li><li><p><span>Git对象存储文件的数据内容，而不去记录其文件名</span></p></li><li><p><span>git对象（也就是数据对象）表示的是某单个文件的一次版本的内容</span></p></li><li><p><span>以a.txt（v1_1）文件为例，将内容v1_1转换成hash-code（40个字符，是一个SHA-1哈希值），hash_code_2（hash-code的前两位作为文件目录名称），hash_code_2~（hash-code的非前两位（38位）作为hash-code-2文件夹下的唯一文件的文件名称，文件中存储的是v1_1的压缩版本）</span></p></li><li><p><span>相关操作说明：</span></p><ul><li><span>各文件目录的命名加上内部文件的命名组成的xxx（是一个hash-code）在命令</span><code>git cat-file -p xxx</code><span>下会还原成原内容（commit信息和保存的数据内容）-t是查看数据类型</span></li><li><span>git的工作无非就是使用</span><code>echo &#39;xxx&#39; | git hash-object -w --stdin</code><span>将内容xxx转换成hash-code以</span><code>key:value</code><span>的形式存入文件objects文件夹中。</span></li><li><code>git hash-object 文件路径</code><span> 返回对应文件内容的键值（hash-code）</span></li><li><code>git hash-object -w 文件路径</code><span>   将指定文件路径中的内容转换成hash-code，并使用git对象存入文件Objects文件夹中，其存储的内容是经过压缩的，但其存储的不是增量（版本之间存储的不是增量，而是当前版本的</span><strong><em><span>最新所有git对象</span></em></strong><span>）</span></li></ul></li></ul><h3><a name="树对象" class="md-header-anchor"></a><span>树对象</span></h3><ul><li><span>记住文件的每一个版本所对应的hash-code并不现实</span></li><li><span>在Git中，文件名并没有被保存-----我们只保存了文件的内容</span></li><li><span>一个git对象只能存储一个文件，一个项目的一个版本有多个文件</span></li><li><span>一个树对象包含多个git对象或子树对象的hash-code指针，以及相应的模式，类型，文件信息</span></li><li><span>通常我们用树对象来表示项目的一次版本</span></li><li><code>git update-index --add --cacheinfo x xx xxx</code><span>  利用update-index命令为xxx文件（xx是文件内容的hash-code,xxx为文件的名称）的首个版本创建一个暂存区。并通过</span><code>git write-tree</code><span>命令生成树对象（暂存区的快照）将其写入Objects文件夹中，x表示文件模式（100644-普通文件，100755-可执行文件，120000-一个符号链接），若之前文件xxx不在暂存区，需要add（</span><strong><em><span>若只是简单的修改已有的文件，则不需要执行--add，所有涉及到add的命令同理</span></em></strong><span>），--cacheinfo，需要添加的文件xxx在Git数据库objects中，而不是位于当前目录下，需要查询出来</span></li></ul><h3><a name="commit对象提交对象）" class="md-header-anchor"></a><span>commit对象（提交对象）</span></h3><ul><li><strong><em><span>commit描述信息+commit作者信息+当前tree对象的hash-code+上一个tree对象的commit(parent)的hash-code(为初始版本则无parent)</span></em></strong></li><li><span>底层命令为</span><code>echo &#39;x&#39; | git commit-tree xx -p xxx</code><span> 其中x是我们的描述内容，xx是某一个树对象的hash-code，xxx是某一个commit对象的hash-code,最终返回一个commit对象的hash-code。（一般来说，某一个指的是当前提交之前在数据库中的最新的对应的对象）</span></li><li><span>所以commit对象将所有的版本都串了起来，是一种链式结构</span></li></ul><h3><a name="三种对象的关系" class="md-header-anchor"></a><span>三种对象的关系</span></h3><p><img src="https://raw.githubusercontent.com/yusheng1020/PicGo_MyPicBed/main/gitLearning/pic_2.png" style="zoom:70%;" /></p><ul><li><code>A-&gt;B</code><span>表示包含文件A包含文件B</span></li><li><span>一个commit对象是对树对象的一个封装，就是一个项目的版本，一个树对象是一个项目版本的快照（包含项目所有的git对象），一个git对象对应的是文件的快照（而不是相对增量）</span></li><li><span>一次完整的流程必定包含三种对象，并且，一次提交必定只会有一个commit对象和一个tree对象</span></li></ul><h2><a name="git本地仓库操作" class="md-header-anchor"></a><span>GIT本地仓库操作</span></h2><ul><li><p><code>git init</code><span>       初始化仓库</span></p></li><li><p><span>工作目录中的所有文件状态不外乎两种-----</span><strong><span>已跟踪</span></strong><span>和</span><strong><span>未跟踪</span></strong></p><ul><li><p><strong><span>已跟踪</span></strong><span>：指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，他们的状态可能是</span><strong><em><span>已提交</span></em></strong><span>，</span><strong><em><span>已修改</span></em></strong><span>，</span><strong><em><span>已暂存</span></em></strong><span>。</span></p></li><li><p><strong><span>未跟踪(untracked files---new files(新的文件))</span></strong><span>：其他非已跟踪文件，没有上次更新的快照，也不在当前的暂存区域。</span></p><p><code>git add xxx</code><strong><em><span>将文件xxx(或文件目录xxx下的所有文件)由未跟踪变成已跟踪状态中的已暂存状态</span></em></strong></p></li><li><p><span>初次克隆某个仓库的时候，工作目录中的所有文件都是</span><strong><span>已跟踪</span></strong><span>的文件，且状态为</span><strong><em><span>已提交</span></em></strong><span>，在编辑过某些文件之后，Git将这些文件标为</span><strong><em><span>已修改(changes not staged for commit---modified(修改)---deleted(删除))</span></em></strong><span>，再逐步把这些修改过的文件放到暂存区域，标记为</span><strong><em><span>已暂存(changes to be commited---new files(新加的文件)--modified(修改)--deleted(删除))</span></em></strong><span>，直到最后一次性提交所有这些暂存起来的文件，变成</span><strong><em><span>已提交</span></em></strong></p></li></ul></li><li><p><code>git status</code><span>     查看文件状态</span></p></li><li><p><code>git diff</code><span>         当前做了那些更新（已修改状态）还没暂存？</span></p></li><li><p><code>git diff --cached/staged</code><span>    有哪些更新是暂存起来准备好了下次提交的?（</span><strong><span>当前暂存区相对于最新的版本库</span></strong><span>）</span></p></li><li><p><code>git add xxx</code><span>    xxx为上传的文件的名称，从工作区上传到暂存区</span></p></li><li><p><span>当对源项目已有的文件进行修改/添加新的文件的时候，才会进行具体的操作，因此在执行add操作前，会对源文件进行检查，看是否进行了修改/添加。</span></p></li><li><p><span>在这个操作中实际上是进行了两个动作</span></p><ul><li><code>git hash-object -w xxx</code><span>  将xxx文件内容压缩并转换成hash-code再生成一个</span><strong><em><span>git对象</span></em></strong><span>存在objects中</span></li><li><span>再通过</span><code>git update-index --add --chcheinfo x xx xxx</code><span> 从数据库拿出hash-code对应于xx的git对象存储在当前的暂存区中（改变原文件xxx中的内容/新添加一个文件xxx时才会执行，因为暂存区在commit后是不会清空的）</span></li><li><span>这两个命令也可以使用一个合并命令</span><code>git update-index --add xxx</code><span> 来执行，其中xxx是文件名</span></li><li><code>git add ./</code><span>将当前工作区中的所有修改了的文件上传到暂存区</span></li></ul></li><li><p><code>git commit -m &quot;x&quot;</code><span>     x是对于当前上传的说明，并从暂存区上传到本地仓库（git commit启动文本编辑器以便输入本次提交的说明，第一行）</span></p><ul><li><span>对当前的暂存区拍一张快照，使用</span><code>git write-tree</code><span>命令生成一个</span><strong><em><span>树对象</span></em></strong><span>（内容包含最新的</span><strong><em><span>所有</span></em></strong><span>git对象），将其存入objects数据库中</span></li><li><span>同时执行</span><code>echo &#39;x&#39; | git commit-tree xx -p xxx</code><span>将生成一个</span><strong><em><span>commit对象</span></em></strong><span>存入数据库中</span></li></ul></li><li><p><code>git commit -a -m &quot;xxx&quot;</code><span>加一个</span><code>-a</code><span>操作直接跳过add操作，跳过使用暂存区域（将所有已跟踪的文件暂存起来一并提交）</span></p></li><li><p><code>rm xxx</code><span>  在工作区删除文件xxx</span></p></li><li><p><code>git rm x</code><span> 删除暂存区中的文件x（相当于执行了</span><code>rm x</code><span>，</span><code>git add x</code><span>）</span></p></li><li><p><code>git mv x xx</code><span> 将暂存区中的文件x改名为xx（相当于执行了</span><code>mv x xx</code><span>，</span><code>git rm x</code><span>，</span><code>git add xx</code><span>）</span></p></li><li><p><code>git remote add origin 远程仓库</code><span>    添加一个远程仓库origin</span></p></li><li><p><code>git push origin master</code><span>              将当前的master分支上的文件上传到github上</span></p></li><li><p><code>git log</code><span>       查看提交日志   </span><code>q</code><span>退出日志</span></p></li><li><p><code>git log --pretty=oneline</code><span>  一行显示日志（commit对象）</span></p></li><li><p><code>git log --oneline</code><span> 简洁版一行显示日志</span></p></li><li><p><code>git reflog</code><span>       查看以往的所有操作（包括版本回退以及提交日志），前面的序号是当前版本的唯一标识号</span></p></li><li><p><span>git reset --hard HEAD~2  //版本回退到前两个版本、</span></p></li><li><p><span>git reset --hard xxx  //版本回到标识号为xxx版本</span></p></li><li><p><span>git reset --hard -- xxx   //找回之前删除的xxx文件</span></p></li><li><p><span>git remote rm origin  //删除远程Git仓库</span></p></li><li><p><span>git remote -v      //查看远程仓库地址</span></p></li><li><p><span>git checkout xxx    //本地删错了，将文件从暂存区中还原回来</span></p></li></ul><h2><a name="git分支操作" class="md-header-anchor"></a><span>Git分支操作</span></h2><h3><a name="基本命令" class="md-header-anchor"></a><span>基本命令</span></h3><ul><li><p><span>在很多版本控制系统中，常常需要完全创建一个源代码目录的副本，对于大项目来说，这是非常浪费时间的</span></p></li><li><p><span>Git处理分支是非常轻量的，创建分支几乎在瞬间完成，并且在不同分支之间的切换操作十分便捷</span></p></li><li><p><img src="https://raw.githubusercontent.com/yusheng1020/PicGo_MyPicBed/main/gitLearning/pic_3.png" referrerpolicy="no-referrer"></p></li><li><p><span>分支的本质就是一个提交对象</span></p></li><li><p><span>HEAD是一个指针，它默认指向master分支，切换分支时就是让HEAD指向不同的分支</span></p></li><li><p><span>再次提交一个commit对象的时候。向前走的是HEAD指针，携带着当前分支向前走</span></p></li><li><p><code>git branch</code><span> 显示分支列表</span></p></li><li><p><code>git branch xxx</code><span>  创建一个名字为xxx的分支</span></p></li><li><p><code>git checkout xxx</code><span>  切换到xxx的分支上去</span></p><ul><li><span>该操作会改变三个地方</span><strong><em><span>HEAD,工作区，暂存区</span></em></strong></li><li><span>执行该命令前，要保证当前分支是干净的（已提交状态）</span></li><li><span>如果当前分支上有未暂存的修改（未跟踪）或未提交的暂存（已暂存），在checkout时，会带过去（污染其他分支）或报错（已修改）</span></li></ul></li><li><p><code>git branch</code><span>     查看分支列表</span></p></li><li><p><code>git branch -D xxx</code><span>   强制删除分支xxx(必须要切到其他分支才能删除)</span></p></li><li><p><code>git branch -d xxx</code><span>   删除空的分支 删除已经被合并的分支</span></p></li><li><p><code>git log --oneline --decorate --graph --all</code><span> 查看项目分支历史</span></p></li><li><p><code>git config --global alias.xx xxx</code><span>  将命令xxx取个别名xx</span></p></li><li><p><code>git branch -v</code><span>  查看每个分支的最后一次提交</span></p></li><li><p><code>git branch xxx xx</code><span>  新建一个分支xxx，并将分支xxx指向hash-code为xx的commit对象</span></p></li><li><p><code>git checkout -b xxx</code><span>  新建一个分支xxx,并切换过去</span></p></li><li><p><code>git merge xxx</code><span>  当前分支与分支xxx进行合并</span></p><ul><li><span>fast forward快进合并，是在同一条主线上的合并</span></li></ul><p><img src="https://raw.githubusercontent.com/yusheng1020/PicGo_MyPicBed/main/gitLearning/pic_4.png" style="zoom:70%;" /></p><ul><li><span>现在两条线上的合并（典型合并）</span></li></ul><p><img src="https://raw.githubusercontent.com/yusheng1020/PicGo_MyPicBed/main/gitLearning/pic_4.png" style="zoom:70%;" /></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>-  <span class="cm-invalidchar" title="\u200b" aria-label="\u200b" cm-text="​">•</span><span class="cm-tab" role="presentation" cm-text="	">    </span>回到master，`git merge xxx` 合并xxx分支，若发生冲突，则打开具体的文件进行修改，再进行`git add ./` 并更新到版本库</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 45px;"></div><div class="CodeMirror-gutters" style="display: none; height: 45px;"></div></div></div></pre><p>&nbsp;</p></li></ul><h3><a name="git分支工作案例" class="md-header-anchor"></a><span>Git分支工作案例</span></h3><ul><li><span>开发某个网站</span></li><li><span>为实现某个新的需求，创建一个分支</span></li><li><span>在这个分支上展开工作</span></li><li><span>正在此时，你突然接到通知有个严重的问题需要紧急修复，则按照以下方式处理：</span></li><li><span>使得当前工作分支都处于</span><strong><em><span>已提交</span></em></strong><span>状态，再切换到你的线上分支</span></li><li><span>为这个紧急任务新建一个分支，并在其中修复他</span></li><li><span>在测试通过之后，切换回线上分支，然后合并这个修补分支，最终将改动推送到线上分支，再删除这个修补分支</span></li><li><span>切换回到你最初工作的分支上，继续工作</span><span>	</span></li></ul><p>&nbsp;</p><h3><a name="git分支模式" class="md-header-anchor"></a><span>Git分支模式</span></h3><ul><li><span>长期分支（master和develop）与特性分支（topic）,develop是自己拉的分支，topic是对于自己的分支的子功能写完一个合并一个</span></li></ul><p><img src="https://raw.githubusercontent.com/yusheng1020/PicGo_MyPicBed/main/gitLearning/pic_6.png" style="zoom:100%;" /></p><ul><li><h4><a name="git存储" class="md-header-anchor"></a><span>Git存储</span></h4><ul><li><span>有时，当你在项目的一部分上已经工作一段时间后，所有的东西都进入了混乱的状态，而这时你想要切换到另一个分支做一点别的事情。问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。</span></li><li><code>git stash list</code><span>  查看存储区</span></li><li><code>git stash</code><span>  会将未完成的修改保存到一个栈上，并保证</span><strong><span>工作区</span></strong><span>十分干净（实际上是提交了，但在日志中查不到），而你可以在任何时候重新应用这些改动(</span><code>git stash apply stash@{x}</code><span>这个操作能够还原栈中的第x个元素，但不会删除这个元素，删除可以用命令</span><code>git stash drop stash@{x}</code><span>)</span></li><li><code>git stash pop stash@{x}</code><span>  应用存储并从栈中扔掉它</span></li><li><span>不指定</span><code>stash@{x}</code><span>则默认是最新的存储进度</span></li><li><code>git stash clear</code><span>清空存储区</span></li></ul></li><li><h4><a name="数据恢复" class="md-header-anchor"></a><span>数据恢复</span></h4><ul><li></li></ul></li><li><h4><a name="git撤销操作" class="md-header-anchor"></a><span>Git撤销操作</span></h4><ul><li><p><span>操作的前提是文件是已追踪的</span></p></li><li><p><span>工作区</span></p><ul><li><code>git restore xxx</code><span>  工作区中的文件xxx修改回到最初的样子（</span><code>git checkout -- xxx</code><span>也可）</span></li></ul></li><li><p><span>暂存区</span></p><ul><li><span>文件</span><code>add</code><span>入了暂存区，撤回操作</span><code>git restore --staged xxx</code></li></ul></li><li><p><span>版本库</span></p><ul><li><span>撤回自己的提交（注释写错了，工作区已修改的文件忘记提交到暂存区了）</span></li><li><code>git add xxx</code><span> 再提交一次</span></li><li><span>再</span><code>git commit --amend</code><span>重新写注释</span></li></ul></li></ul></li><li><h4><a name="集中式与分布式的区别" class="md-header-anchor"></a><span>集中式与分布式的区别</span></h4><ul><li><p><span>集中式（SVN）：SVN每次存储的都是差异，需要的硬盘空间相对小一点，可是回滚速度很慢</span></p><ul><li><span>优点：代码存在单一服务器上，便于项目管理</span></li><li><span>缺点：服务器宕机：员工写的代码得不到保障；服务器没了：整个项目的历史记录得不到保障</span></li></ul></li><li><p><span>分布式（Git）：git每次存储的都是整个项目的快照，需要欸但硬盘空间会相对大一些，但git对代码进行了极致的压缩，最终需要的实际空间比SVN大不了多少，而且代码回滚速度快</span></p><ul><li><span>优点：完全分布式</span></li><li><span>缺点：命令多</span></li></ul></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="杂记" class="md-header-anchor"></a><span>杂记</span></h2><p><span>版本一：test.txt(v1)，test2.txt(v1_2)</span></p><p><span>版本二：test3.txt(v2)</span></p><p><span>版本三：test.txt(v1,v2)</span></p><p><span>版本四：test.txt(v1,v2,v3)</span></p><p><span>数据库：</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="python"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-error">0</span><span class="cm-number">2</span><span class="cm-operator">/</span><span class="cm-variable">e36c19f1cc0901c2dd7d94f596986ea904cd44</span> &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本三test.txt的内容---git对象 &nbsp; &nbsp; &nbsp;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">31</span><span class="cm-operator">/</span><span class="cm-number">4</span><span class="cm-variable">fe298016ec142a282536791a98537edf619f8</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本三提交信息</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">36</span><span class="cm-operator">/</span><span class="cm-number">5e9</span><span class="cm-variable">e187f20d28f03072b20cf00acb4d6803639</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本一的提交信息</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">3</span><span class="cm-variable">d</span><span class="cm-operator">/</span><span class="cm-variable">ba9ed9ac32e689750a242fe1751fb09166e8c2</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本四的提交信息</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">4</span><span class="cm-variable">b</span><span class="cm-operator">/</span><span class="cm-number">1</span><span class="cm-variable">d4d4b660c400875dd122de217e942f481a378</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本四的test.txt的内容------git对象</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">59</span><span class="cm-operator">/</span><span class="cm-number">3401</span><span class="cm-variable">d06024c1182241a6a0a9733fc36ad3301c</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本一的两个git对象------树对象</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">60</span><span class="cm-operator">/</span><span class="cm-variable">ce2fe88a87d16d8c515f96ea905dae9eaeda94</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本一test2.txt的内容---git对象</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">62</span><span class="cm-operator">/</span><span class="cm-number">6799</span><span class="cm-variable">f0f85326a8c1fc522db584e86cdfccd51f</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本一test.txt的内容----git对象、</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">8</span><span class="cm-variable">c</span><span class="cm-operator">/</span><span class="cm-number">1384</span><span class="cm-variable">d825dbbe41309b7dc18ee7991a9085c46e</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本二test3.txt的内容---git对象</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-number">9</span><span class="cm-variable">a</span><span class="cm-operator">/</span><span class="cm-number">94</span><span class="cm-variable">b281d542c55b7c85639af9027fd9abae75ae</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本四的三个git对象------树对象</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-variable">ad</span><span class="cm-operator">/</span><span class="cm-variable">b49d1d5d72173b825904dfe61b75dc8f7351ed</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本二的三个git对象------树对象</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-variable">d6</span><span class="cm-operator">/</span><span class="cm-number">595174</span><span class="cm-variable">c43ca856243fb568d7740e2c3b3391bc</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本二的提交信息</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-property">git</span><span class="cm-operator">/</span><span class="cm-variable">objects</span><span class="cm-operator">/</span><span class="cm-variable">e2</span><span class="cm-operator">/</span><span class="cm-number">3</span><span class="cm-variable">d1dc07353aabc5ce9b39a4fdaaf255ca446e6</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">#版本三的三个git对象------树对象</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 291px;"></div><div class="CodeMirror-gutters" style="display: none; height: 291px;"></div></div></div></pre><p><span>数据库的存放没有任何线性规律</span></p><p><span>每次在对项目版本进行提交的时候，暂存区中的文件</span><strong><em><span>不会被清空</span></em></strong><span>，所以暂存区中始终保存着多个</span><strong><em><span>最新的git对象</span></em></strong><span>，当我们对已有的文件在工作区进行修改后执行</span><code>add</code><span>命令会提交到暂存区进行覆盖，对于新添加的文件提交到暂存区中会在暂存区中新添加一个新的该文件对应的</span><strong><em><span>git对象</span></em></strong></p><p>&nbsp;</p></div>
+</body>
+</html>
